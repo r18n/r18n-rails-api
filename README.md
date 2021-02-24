@@ -1,5 +1,12 @@
 # R18n Rails API
 
+[![Cirrus CI - Base Branch Build Status](https://img.shields.io/cirrus/github/r18n/r18n-rails-api?style=flat-square)](https://cirrus-ci.com/github/r18n/r18n-rails-api)
+[![Codecov branch](https://img.shields.io/codecov/c/github/r18n/r18n-rails-api/master.svg?style=flat-square)](https://codecov.io/gh/r18n/r18n-rails-api)
+[![Code Climate](https://img.shields.io/codeclimate/maintainability/r18n/r18n-rails-api.svg?style=flat-square)](https://codeclimate.com/github/r18n/r18n-rails-api)
+[![Depfu](https://img.shields.io/depfu/r18n/r18n-rails-api?style=flat-square)](https://depfu.com/repos/github/r18n/r18n-rails-api)
+[![License](https://img.shields.io/github/license/r18n/r18n-rails-api.svg?style=flat-square)](LICENSE)
+[![Gem](https://img.shields.io/gem/v/r18n-rails-api.svg?style=flat-square)](https://rubygems.org/gems/r18n-rails-api)
+
 Rails I18n compatibility for R18n:
 * R18n loader for Rails I18n translation format;
 * R18n back-end.
