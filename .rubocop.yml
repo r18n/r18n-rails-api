@@ -46,11 +46,6 @@ Metrics/BlockLength:
 Rails/RakeEnvironment:
   Enabled: false
 
-Rails/TimeZone:
-  Exclude:
-    ## https://github.com/rubocop-hq/rubocop-rails/issues/432
-    - '**/*.gemspec'
-
 # TODO: fix offenses and enable cops
 
 Metrics/AbcSize:
