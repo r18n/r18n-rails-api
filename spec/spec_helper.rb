@@ -5,6 +5,14 @@ require 'pry-byebug'
 require 'i18n'
 require 'active_support'
 
+require 'simplecov'
+SimpleCov.start
+
+if ENV['CODECOV_TOKEN']
+  require 'codecov'
+  SimpleCov.formatter = SimpleCov::Formatter::Codecov
+end
+
 I18n.enforce_available_locales = true
 
 require_relative '../lib/r18n-rails-api'
