@@ -116,12 +116,12 @@ module R18n
     end
 
     def translation_to_hash(translation)
-      translation.to_hash.map do |key, value|
+      translation.to_hash.to_h do |key, value|
         [
           key.to_sym,
           value.is_a?(Hash) ? translation_to_hash(value) : format_value(value)
         ]
-      end.to_h
+      end
     end
 
     # Find translation by `scope.key(params)` in current R18n I18n
