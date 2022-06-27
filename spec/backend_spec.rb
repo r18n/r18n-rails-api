@@ -49,7 +49,10 @@ describe R18n::Backend do
 
   it 'uses default value' do
     expect(I18n.t(:missed, default: 'Default')).to                 eq 'Default'
+    ## Just check the functionallity. Also, I don't know how to do it with `'in.missed'`.
+    # rubocop:disable Rails/DotSeparatedKeys
     expect(I18n.t(:missed, default: :default, scope: :in)).to      eq 'Default'
+    # rubocop:enable Rails/DotSeparatedKeys
     expect(I18n.t(:missed, default: %i[also_no in.default])).to    eq 'Default'
     expect(I18n.t(:missed, default: proc { |key| key.to_s })).to   eq 'missed'
   end
