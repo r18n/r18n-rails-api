@@ -14,6 +14,10 @@ end
 
 SimpleCov.start
 
+RSpec.configure do |config|
+  config.example_status_persistence_file_path = "#{__dir__}/examples.txt"
+end
+
 I18n.enforce_available_locales = true
 
 require_relative '../lib/r18n-rails-api'
