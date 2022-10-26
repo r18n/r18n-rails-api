@@ -64,6 +64,29 @@ describe R18n::Backend do
     expect { I18n.t(:missed) }.to raise_error(::I18n::MissingTranslationData)
   end
 
+  it 'does not user reserved keys as variables' do
+    ## https://github.com/rubocop-hq/rubocop/issues/7436#issuecomment-578766498
+    # rubocop:disable Style/FormatStringToken
+    expect(I18n.t(:scope, scope: 'reserved_keys'))
+      .to eq '%{scope} is not here'
+    expect(I18n.t('reserved_keys.default', default: 'it is default'))
+      .to eq '%{default} is not used'
+    expect(I18n.t('reserved_keys/separator', separator: '/'))
+      .to eq '%{separator} is not used'
+
+    expect(I18n.t(:missed, default: %i[scope], scope: 'reserved_keys'))
+      .to eq '%{scope} is not here'
+    expect(I18n.t(:missed, default: %i[reserved_keys.default]))
+      .to eq '%{default} is not used'
+    expect(I18n.t(:missed, default: %i[reserved_keys/separator], separator: '/'))
+      .to eq '%{separator} is not used'
+
+    ## Except `:default`
+    expect(I18n.t(:missed, default: ->(key, options) { "#{key}, #{options}" }, scope: 'in'))
+      .to eq 'missed, {:scope=>"in"}'
+    # rubocop:enable Style/FormatStringToken
+  end
+
   it 'reloads translations' do
     expect { I18n.t(:other) }.to raise_error(::I18n::MissingTranslationData)
     I18n.load_path << other_files
