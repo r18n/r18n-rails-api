@@ -38,12 +38,12 @@ module R18n
       return key.map { |k| translate(locale, k, options) } if key.is_a?(Array)
 
       scope, default, separator = options.values_at(*RESERVED_KEYS)
-      params = options.reject { |name, _value| RESERVED_KEYS.include?(name) }
+      params = options.except(*RESERVED_KEYS)
 
       result = lookup(locale, scope, key, separator, params)
 
       if result.is_a? Untranslated
-        options = options.reject { |opts_key, _value| opts_key == :default }
+        options = options.except(:default)
 
         default = []        if default.nil?
         default = [default] unless default.is_a? Array
