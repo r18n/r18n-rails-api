@@ -19,3 +19,8 @@ en:
   users:
     one: 1 user
     other: "%{count} users"
+
+  reserved_keys:
+    scope: "%{scope} is not here"
+    default: "%{default} is not used"
+    separator: "%{separator} is not used"
