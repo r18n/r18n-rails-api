@@ -59,9 +59,9 @@ describe R18n::Backend do
 
   it 'raises error on no translation' do
     expect { I18n.backend.translate(:en, :missed) }
-      .to raise_error(::I18n::MissingTranslationData)
+      .to raise_error(I18n::MissingTranslationData)
 
-    expect { I18n.t(:missed) }.to raise_error(::I18n::MissingTranslationData)
+    expect { I18n.t(:missed) }.to raise_error(I18n::MissingTranslationData)
   end
 
   it 'does not user reserved keys as variables' do
@@ -88,7 +88,7 @@ describe R18n::Backend do
   end
 
   it 'reloads translations' do
-    expect { I18n.t(:other) }.to raise_error(::I18n::MissingTranslationData)
+    expect { I18n.t(:other) }.to raise_error(I18n::MissingTranslationData)
     I18n.load_path << other_files
     I18n.reload!
     expect(I18n.t(:other)).to eq 'Other'
@@ -115,10 +115,10 @@ describe R18n::Backend do
 
   it 'corrects detect untranslated, whem path is deeper than string' do
     expect { I18n.t('in.another.level.deeper') }
-      .to raise_error(::I18n::MissingTranslationData)
+      .to raise_error(I18n::MissingTranslationData)
 
     expect { I18n.t('in.another.level.go.deeper') }
-      .to raise_error(::I18n::MissingTranslationData)
+      .to raise_error(I18n::MissingTranslationData)
   end
 
   it "doesn't call String methods" do
@@ -127,7 +127,7 @@ describe R18n::Backend do
 
   it "doesn't call object methods" do
     expect { I18n.t('in.another.level.to_sym') }
-      .to raise_error(::I18n::MissingTranslationData)
+      .to raise_error(I18n::MissingTranslationData)
   end
 
   it 'works deeper pluralization' do
