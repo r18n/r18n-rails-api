@@ -18,6 +18,7 @@
 remark_task:
   container:
     image: node:latest
+
   node_modules_cache:
     folder: node_modules
     fingerprint_script:
@@ -25,17 +26,18 @@ remark_task:
       - node -v
       - cat package.json
     populate_script: npm install
+
   remark_script: npm run remark
 
 rubocop_task:
-  <<: *ruby
   container:
     image: ruby:latest
+
+  <<: *ruby
+
   rubocop_script: bundle exec rubocop
 
 test_task:
-  <<: *ruby
-
   container:
     matrix:
       image: ruby:2.6
@@ -43,6 +45,8 @@ test_task:
       image: ruby:3.0
       image: ruby:3.1
       image: ruby:3.2
+
+  <<: *ruby
 
   test_script: bundle exec rspec
 
