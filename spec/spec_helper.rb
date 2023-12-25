@@ -25,7 +25,7 @@ EN   = R18n.locale(:en)
 RU   = R18n.locale(:ru)
 DECH = R18n.locale(:'de-CH')
 
-shared_context 'common rails api files' do
+shared_context 'with common rails api files' do
   let(:general_files) do
     Dir.glob(File.join(__dir__, 'data', 'general', '*'))
   end
@@ -42,5 +42,5 @@ end
 
 RSpec.configure do |config|
   config.before { R18n.clear_cache! }
-  config.include_context 'common rails api files'
+  config.include_context 'with common rails api files'
 end
