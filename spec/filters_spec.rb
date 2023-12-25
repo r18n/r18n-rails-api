@@ -1,29 +1,44 @@
 # frozen_string_literal: true
 
-describe 'Rails filters' do
-  it 'uses old variables syntax' do
-    i18n = R18n::Translation.new(
-      EN, '', locale: EN, translations: { 'echo' => 'Value is {{value}}' }
-    )
-    expect(i18n.echo(value: 'Old')).to eq 'Value is Old'
+describe 'R18n::Filters' do
+  describe 'using old variables syntax' do
+    let(:i18n) do
+      R18n::Translation.new(
+        EN, '', locale: EN, translations: { 'echo' => 'Value is {{value}}' }
+      )
+    end
+
+    specify do
+      expect(i18n.echo(value: 'Old')).to eq 'Value is Old'
+    end
   end
 
   # rubocop:disable Style/FormatStringToken
-  it 'pluralizes by variable %{count}' do
-    i18n = R18n::Translation.new(
-      EN, '', locale: EN, translations: {
-        'users' => R18n::Typed.new(
-          'pl',
-          0 => 'no users',
-          1 => '1 user',
-          'n' => '%{count} users'
-        )
-      }
-    )
+  describe 'pluralization by variable %{count}' do
+    let(:i18n) do
+      R18n::Translation.new(
+        EN, '', locale: EN, translations: {
+          'users' => R18n::Typed.new(
+            'pl',
+            0 => 'no users',
+            1 => '1 user',
+            'n' => '%{count} users'
+          )
+        }
+      )
+    end
 
-    expect(i18n.users(count: 0)).to eq 'no users'
-    expect(i18n.users(count: 1)).to eq '1 user'
-    expect(i18n.users(count: 5)).to eq '5 users'
+    specify do
+      expect(i18n.users(count: 0)).to eq 'no users'
+    end
+
+    specify do
+      expect(i18n.users(count: 1)).to eq '1 user'
+    end
+
+    specify do
+      expect(i18n.users(count: 5)).to eq '5 users'
+    end
   end
   # rubocop:enable Style/FormatStringToken
 end
