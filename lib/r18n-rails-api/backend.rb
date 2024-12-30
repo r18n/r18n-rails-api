@@ -61,7 +61,7 @@ module R18n
           end
         end
 
-        raise ::I18n::MissingTranslationData.new(locale, key, options)
+        throw :exception, ::I18n::MissingTranslationData.new(locale, key, options)
       else
         result
       end
