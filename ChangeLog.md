@@ -2,6 +2,15 @@
 
 ## Unreleased
 
+## 6.0.0 (Нови Сад) (2026-02-17)
+
+* Drop Ruby 2.5, 2.6, 2.7, 3.0 and 3.1 support.
+* Add Ruby 3.2, 3.3, 3.4 and 4.0 support.
+* Update runtime dependencies.
+* Update development dependencies.
+* Resolve new RuboCop offenses.
+* Improve CI config.
+
 ## 5.0.0 (Warszawa) (2021-03-04)
 
 * Take out `r18n-rails-api` gem from mono-repository.

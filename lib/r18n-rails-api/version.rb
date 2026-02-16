@@ -3,7 +3,7 @@
 module R18n
   module Rails
     module API
-      VERSION = '5.0.0'
+      VERSION = '6.0.0'
     end
   end
 end
