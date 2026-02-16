@@ -187,7 +187,15 @@ describe R18n::Backend do
             I18n.t(:missed, default: ->(key, options) { "#{key}, #{options}" }, scope: 'in')
           end
 
-          it { is_expected.to eq 'missed, {:scope=>"in"}' }
+          let(:expected_value) do
+            if Gem::Version.new(RUBY_VERSION) < Gem::Version.new('4.0.0')
+              'missed, {:scope=>"in"}'
+            else
+              'missed, {scope: "in"}'
+            end
+          end
+
+          it { is_expected.to eq expected_value }
         end
       end
     end
