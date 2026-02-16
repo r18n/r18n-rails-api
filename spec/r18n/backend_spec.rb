@@ -188,7 +188,7 @@ describe R18n::Backend do
           end
 
           let(:expected_value) do
-            if Gem::Version.new(RUBY_VERSION) < Gem::Version.new('4.0.0')
+            if Gem::Version.new(RUBY_VERSION) < Gem::Version.new('3.4.0')
               'missed, {:scope=>"in"}'
             else
               'missed, {scope: "in"}'
